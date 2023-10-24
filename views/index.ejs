@@ -1,0 +1,41 @@
+<%- include('partials/header.ejs')  %>
+    
+<div class="box title">
+    <h1> 
+        <%= new Date().toLocaleString('default',{weekday: "long"}) %>
+    </h1>
+    <p> <%= new Date().toLocaleString('default', {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    }) %></p>
+</div>
+
+<!-- todo list -->
+<div class="box list-area">
+    <% for (var i = 0; i < taskList.length; i++) {%>
+        <div class="list-item">
+            <input type="checkbox">
+            <p><%= taskList[i] %></p>
+            <form class="delete-form" action="/delete" method="post">
+                <input class="delete-button" type="submit" value="delete task" name="deleteButton <%= i %>"></input>
+            </form>
+        </div>
+    <% } %>
+
+    <div class="list-item">
+        <input type="checkbox">
+        <form action="/" method="post">
+            <input type="text" placeholder="Write new task" name="newTask"></input>
+            <input class="btn" type="submit" value="+"></input>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+
+<%- include('partials/footer.ejs')  %>
